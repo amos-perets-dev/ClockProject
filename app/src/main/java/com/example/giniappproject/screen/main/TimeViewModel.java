@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.PowerManager;
 import android.provider.Settings;
 
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveDataReactiveStreams;
 import androidx.lifecycle.MutableLiveData;
@@ -17,13 +18,22 @@ public class TimeViewModel extends ViewModel {
 
     private MutableLiveData<Boolean> startService = new MutableLiveData<>();
 
-    private MutableLiveData<Intent> askPermissioin = new MutableLiveData<Intent>();
+    private MutableLiveData<Intent> askPermissioin = new MutableLiveData<>();
+
+    private MutableLiveData<Boolean> showErrorMsg = new MutableLiveData<>();
 
     /**
      * Call when need to start the service
+     * @param packageName
+     * @param powerManager
      */
-    public void startService(){
-        startService.postValue(true);
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void startService(String packageName, PowerManager powerManager){
+        if (isBatteryOptimizationsGranted(packageName, powerManager)){
+            startService.postValue(true);
+        } else {
+            showErrorMsg.postValue(true);
+        }
     }
 
     /**
@@ -47,17 +57,27 @@ public class TimeViewModel extends ViewModel {
         return Observable.fromPublisher(LiveDataReactiveStreams.toPublisher(lifecycleOwner, askPermissioin));
     }
 
+    public Observable<Boolean> showErrorMsg(LifecycleOwner lifecycleOwner) {
+        return Observable.fromPublisher(LiveDataReactiveStreams.toPublisher(lifecycleOwner, showErrorMsg));
+    }
+
+
     /**
      * Create permission battery optimizations
      */
     public void permission(String packageName, PowerManager pm) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Intent intent = new Intent();
-            if (!pm.isIgnoringBatteryOptimizations(packageName)) {
+            if (!isBatteryOptimizationsGranted(packageName, pm)) {
                 intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
                 intent.setData(Uri.parse("package:" + packageName));
                 askPermissioin.postValue(intent);
             }
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private boolean isBatteryOptimizationsGranted(String packageName, PowerManager pm){
+        return pm.isIgnoringBatteryOptimizations(packageName);
     }
 }

@@ -4,5 +4,6 @@
     <string name="activity_main_start_service">start service</string>
     <string name="activity_main_stop_service">stop service</string>
     <string name="valid_digit">1</string>
+    <string name="need_to_open_permmision"> Need to open battery optimizations permmision </string>
 
 </resources>
