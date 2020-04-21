@@ -7,13 +7,17 @@ import java.util.Date;
 
 public class TimeHelper {
 
-    public String getCurrentTime(){
+    /**
+     * Get the current time by "HH:mm"
+     *
+     * @return time
+     */
+    String getCurrentTime() {
         Calendar cal = Calendar.getInstance();
         Date currentLocalTime = cal.getTime();
         DateFormat date = new SimpleDateFormat("HH:mm");
 
-        String localTime = date.format(currentLocalTime);
-        return localTime;
+        return date.format(currentLocalTime);
     }
 
 }

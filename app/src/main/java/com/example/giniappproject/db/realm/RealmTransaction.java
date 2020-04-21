@@ -11,21 +11,11 @@ public class RealmTransaction {
 
     private Realm realm = Realm.getDefaultInstance();
 
-    public Realm getDefaultRealm() {
-        return realm;
-    }
-
     public <T extends RealmObject> void insert(final T object ){
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                realm.copyToRealmOrUpdate(object);
-            }
-        });
+        realm.executeTransaction(realm -> realm.copyToRealmOrUpdate(object));
     }
 
     public <T extends RealmObject> Observable<RealmResults<T>> getObservableData(final Class<T> realmClass) {
-//        return realm.where(realmClass.getClass())
         return realm.where(realmClass)
                 .findAllAsync()
                 .asFlowable()
