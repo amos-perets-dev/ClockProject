@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 
 import com.example.giniappproject.db.IRepository;
 import com.example.giniappproject.db.Repository;
+import com.example.giniappproject.model.time.ITimeHelper;
+import com.example.giniappproject.model.time.TimeHelper;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +22,7 @@ public class ClockService extends Service {
 
     private IRepository repository = Repository.create();
 
-    private TimeHelper timeHelper = new TimeHelper();
+    private ITimeHelper timeHelper = new TimeHelper();
 
     private Disposable disposable = Disposables.disposed();
 
@@ -34,7 +36,7 @@ public class ClockService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         disposable = Observable
-                .interval(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+                .interval(1, TimeUnit.MINUTES, AndroidSchedulers.mainThread())
                 .map(ignored -> timeHelper.getCurrentTime())
                 .map(Time::new)
                 .subscribe(repository::insertTime);
