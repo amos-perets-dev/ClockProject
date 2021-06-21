@@ -1,12 +1,10 @@
 package com.example.clockproject.screens.clock_state.alarm
 
-import android.os.Bundle
-import android.view.View
-import com.example.clockproject.util.view.CustomTextView
 import com.example.clockproject.R
 import com.example.clockproject.data.ClockState
 import com.example.clockproject.screens.clock_state.BaseClockStateFragment
 import com.example.clockproject.screens.clock_state.ClockStateViewModel
+import com.example.clockproject.util.view.CustomTextView
 import kotlinx.android.synthetic.main.fragment_alarm.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
