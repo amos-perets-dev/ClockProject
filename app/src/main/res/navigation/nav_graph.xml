@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/BaseClockFragment">
+
+    <fragment
+        android:id="@+id/BaseClockFragment"
+        android:name="com.example.clockproject.screens.host.HostClockFragment"
+        android:label="@string/base_clock_fragment_label"
+        tools:layout="@layout/fragment_main_clock">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/AlarmFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AlarmFragment"
+        android:name="com.example.clockproject.screens.clock_state.clock.ClockFragment"
+        android:label="@string/alarm_fragment_label"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/BaseClockFragment" />
+    </fragment>
+</navigation>

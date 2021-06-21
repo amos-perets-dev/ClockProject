@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="time_hours_or_minutes_size">30dp</dimen>
+    <dimen name="time_seconds_size">18dp</dimen>
+    <integer name="custom_long_click_long">2000</integer>
+    <integer name="default_gap_alarm">5</integer>
+    <integer name="snooze_time">5</integer>
+    <integer name="alarm_duration">30</integer>
+    <integer name="light_duration">5000</integer>
+
+</resources>

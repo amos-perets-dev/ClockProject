@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.host.HostClockFragment">
+
+    <View
+        android:id="@+id/main_border"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/clock_border"
+        android:minHeight="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/main_border_top"
+        app:layout_constraintWidth_percent="0.7" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_light"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:text="Light"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/main_border"
+        app:layout_constraintStart_toStartOf="@+id/main_border"
+        app:layout_constraintEnd_toEndOf="@+id/main_border"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_border_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_mode"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:text="mode"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_set"
+        app:layout_constraintStart_toStartOf="@+id/main_border"
+        app:layout_constraintTop_toTopOf="@+id/time_border" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_set"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:text="set"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/time_border"
+        app:layout_constraintStart_toStartOf="@+id/main_border"
+        app:layout_constraintTop_toBottomOf="@+id/button_mode" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_up"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="5dp"
+        android:text="up"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_down"
+        app:layout_constraintEnd_toEndOf="@+id/main_border"
+        app:layout_constraintTop_toTopOf="@+id/time_border" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_down"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="5dp"
+        android:text="down"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/time_border"
+        app:layout_constraintEnd_toEndOf="@+id/main_border"
+        app:layout_constraintTop_toBottomOf="@+id/button_up"/>
+
+    <View
+        android:id="@+id/time_border"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/time_border"
+        app:layout_constraintBottom_toBottomOf="@+id/main_border"
+        app:layout_constraintEnd_toStartOf="@+id/button_up"
+        app:layout_constraintStart_toEndOf="@+id/button_mode"
+        app:layout_constraintTop_toTopOf="@+id/main_border" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_view_mode_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Clock"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/time_border"
+        app:layout_constraintTop_toTopOf="@+id/time_border" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_view_alarm_icon"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/bell"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/time_border"
+        app:layout_constraintTop_toTopOf="@+id/time_border" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_clocks"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/time_border"
+        app:layout_constraintEnd_toEndOf="@+id/image_view_alarm_icon"
+        app:layout_constraintStart_toStartOf="@+id/text_view_mode_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_mode_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/time_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/time_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_view_hours"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="22"
+        android:textColor="@color/black"
+        app:autoSizeMaxTextSize="44dp"
+        app:autoSizeMinTextSize="0dp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/time_start"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_colon_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="22" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_view_colon_icon"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text=":"
+        android:textColor="@color/black"
+        app:autoSizeMaxTextSize="44dp"
+        app:autoSizeMinTextSize="22dp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_minutes"
+        app:layout_constraintStart_toEndOf="@+id/text_view_hours"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text=":" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_view_minutes"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="21"
+        android:textColor="@color/black"
+        app:autoSizeMaxTextSize="44dp"
+        app:autoSizeMinTextSize="18dp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_seconds"
+        app:layout_constraintStart_toEndOf="@+id/text_view_colon_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="21" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_view_seconds"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="20"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/time_end"
+        app:layout_constraintStart_toEndOf="@+id/text_view_minutes"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="20" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
